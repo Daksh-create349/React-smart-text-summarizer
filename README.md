@@ -92,6 +92,8 @@ The entire processing engine is built with deterministic algorithms and runs at 
 
 ### Data Persistence
 - **LocalStorage History Sync** — Users can save named analysis snapshots (including raw text, summary, and compression settings) directly to the browser's `localStorage` via Zustand's `persist` middleware. Snapshots survive page reloads and can be restored or deleted at any time.
+  > <img width="1764" height="930" alt="image" src="https://github.com/user-attachments/assets/fcc3fa66-2dee-4811-a06b-4f009dfbed3a" />
+
 
 ---
 
