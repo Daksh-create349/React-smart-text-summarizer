@@ -47,7 +47,7 @@ export default function SummaryOutputCard() {
         {!hasContent || !summaryText ? (
           <div className="flex-1 flex flex-col items-center justify-center border-2 border-slate-300 border-dashed rounded-3xl bg-[#EBE7E0]/50 text-slate-500 min-h-[200px] shadow-[inset_0_4px_8px_rgba(0,0,0,0.02)]">
              <AlignLeft size={36} className="opacity-30 mb-4 text-slate-600" />
-             <p className="font-black text-sm tracking-widest uppercase opacity-60" style={{textShadow: '0 1px 0 rgba(255,255,255,0.8)'}}>Awaiting Text Ingestion</p>
+             <p className="font-black text-sm tracking-widest uppercase opacity-60" style={{textShadow: '0 1px 0 rgba(255,255,255,0.8)'}}>Waiting for text</p>
           </div>
         ) : (
           <div className="flex-1 flex flex-col bg-[#FCFBFA] p-6 sm:p-8 rounded-3xl border border-slate-300 shadow-[inset_0_2px_10px_rgba(0,0,0,0.02),0_4px_10px_rgba(0,0,0,0.05)] overflow-y-auto max-h-[400px]">

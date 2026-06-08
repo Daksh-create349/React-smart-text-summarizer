@@ -46,18 +46,40 @@ The entire processing engine is built with deterministic algorithms and runs at 
 - **Lexical Sentiment Analysis** — Compares filtered tokens against a static local dictionary of 200+ positive and 150+ negative emotional words to compute an overall sentiment polarity percentage.
 
 ### Dashboard & UI
+
 - **Skeuomorphic Design Language** — A premium, tactile interface inspired by physical analytical hardware, featuring recessed LCD-style screens, mechanical push-buttons with 3D depth shadows, and matte textured backgrounds.
+
 - **Landing Page** — A stunning entry screen with a hero headline, feature cards explaining TF-IDF, Privacy, and Telemetry capabilities, and a large physical "Engage System" call-to-action button.
+
+  > 📸 *Screenshot: Full landing/hero page*
+
 - **Split Workspace Layout** — A responsive two-column grid: the left column houses the Data Ingestion editor, while the right column contains the Analytical Insights dashboard.
+
+  > 📸 *Screenshot: Two-column dashboard with sample text loaded and results visible on the right*
+
 - **Real-Time Live Ticker** — Instantly tracks character count, word count, paragraph count, and estimated reading time (at 200 WPM) as the user types.
+
 - **Interactive Compression Slider** — Allows seamless, real-time control of summary density from 5% to 100% without re-processing the entire text (only re-ranks cached sentence scores).
+
+  > 📸 *Screenshot: Summary Output card showing the generated summary and the Density slider*
+
 - **Keyword Output Quantity Slider** — A dedicated toggle slider (5–40 keywords, step 5) that controls the maximum number of keywords displayed in the tag-cloud matrix.
+
+  > 📸 *Screenshot: Keyword Cloud Grid showing TF-IDF badges and the Limit slider*
+
 - **Cross-Component Keyword Highlighting** — Clicking any keyword badge in the matrix instantly swaps the textarea for a rich DOM-based display (`RawTextDisplay`) that wraps every matching occurrence in amber `<mark>` tags and auto-scrolls to the first hit.
+
+  > 📸 *Screenshot: Raw text view with amber highlights active after clicking a keyword badge*
+
 - **Telemetry Drawer** — A slide-in side panel featuring:
   - Recharts-powered radial gauge for Readability Index (color-coded: red < 50, amber 50–70, green > 70)
   - Stacked polarity bar for Emotional Sentiment distribution
   - Complexity Profiler showing average word length and average sentence length
   - Snapshot DB for saving, loading, and deleting analysis history
+
+  > 📸 *Screenshot: Telemetry Panel open — showing the readability gauge, sentiment bar, and complexity metrics*
+
+  > 📸 *Screenshot: Snapshot DB section inside Telemetry with saved snapshot entries*
 
 ### Data Persistence
 - **LocalStorage History Sync** — Users can save named analysis snapshots (including raw text, summary, and compression settings) directly to the browser's `localStorage` via Zustand's `persist` middleware. Snapshots survive page reloads and can be restored or deleted at any time.

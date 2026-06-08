@@ -44,7 +44,7 @@ function LandingPage({ onStart }) {
           onClick={onStart}
           className="group flex items-center justify-center gap-3 px-12 py-5 bg-gradient-to-b from-emerald-400 to-emerald-600 text-white rounded-2xl font-black text-2xl transition-all shadow-[0_8px_0_#064e3b,0_15px_20px_rgba(0,0,0,0.2),inset_0_2px_0_rgba(255,255,255,0.5)] active:shadow-[0_0px_0_#064e3b,0_0px_0px_rgba(0,0,0,0.2),inset_0_6px_10px_rgba(0,0,0,0.3)] active:translate-y-[8px]"
         >
-          <span className="drop-shadow-md">Engage System</span>
+          <span className="drop-shadow-md">Get Started</span>
           <ChevronRight size={28} className="group-hover:translate-x-1 transition-transform drop-shadow-md" />
         </button>
 

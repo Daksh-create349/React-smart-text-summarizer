@@ -32,7 +32,7 @@ export default function RawInputEditor() {
           <div className="p-2.5 bg-gradient-to-b from-white to-slate-200 rounded-xl border border-slate-300 shadow-[0_2px_4px_rgba(0,0,0,0.05),inset_0_2px_0_white]">
             <Type size={20} className="text-emerald-700 drop-shadow-sm" />
           </div>
-          Data Ingestion Unit
+          Text Input
         </label>
         
         {highlightedKeyword && (
@@ -57,7 +57,7 @@ export default function RawInputEditor() {
             id="raw-text-input"
             value={rawText}
             onChange={handleTextChange}
-            placeholder="Initialize sequence... Paste or type your unstructured text here."
+            placeholder="Paste or type your text here."
             className="flex-1 w-full min-h-[300px] p-6 text-slate-800 bg-[#D4D1C9] border border-slate-400 rounded-2xl resize-none focus:outline-none focus:ring-4 focus:ring-emerald-500/30 transition-all font-sans text-lg leading-relaxed tracking-wide mb-8 shadow-[inset_0_6px_12px_rgba(0,0,0,0.15),inset_0_2px_4px_rgba(0,0,0,0.1),0_2px_0_rgba(255,255,255,0.8)] placeholder:text-slate-500 placeholder:font-bold"
             spellCheck="false"
           />
