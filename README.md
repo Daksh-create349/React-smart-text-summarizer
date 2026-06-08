@@ -51,25 +51,33 @@ The entire processing engine is built with deterministic algorithms and runs at 
 
 - **Landing Page** — A stunning entry screen with a hero headline, feature cards explaining TF-IDF, Privacy, and Telemetry capabilities, and a large physical "Engage System" call-to-action button.
 
-  > 📸 *Screenshot: Full landing/hero page*
+  > <img width="2940" height="1612" alt="image" src="https://github.com/user-attachments/assets/0a265fb6-539d-4ab8-9374-2ba4e46d3ba2" />
+
 
 - **Split Workspace Layout** — A responsive two-column grid: the left column houses the Data Ingestion editor, while the right column contains the Analytical Insights dashboard.
 
-  > 📸 *Screenshot: Two-column dashboard with sample text loaded and results visible on the right*
+  > <img width="2940" height="1514" alt="image" src="https://github.com/user-attachments/assets/3b3f7a30-10ad-4d1c-93c4-1e690533a7d4" />
+
 
 - **Real-Time Live Ticker** — Instantly tracks character count, word count, paragraph count, and estimated reading time (at 200 WPM) as the user types.
 
+  > <img width="1288" height="244" alt="image" src="https://github.com/user-attachments/assets/6ed202c7-c645-41a9-8cd6-f82977296f6b" />
+
+
 - **Interactive Compression Slider** — Allows seamless, real-time control of summary density from 5% to 100% without re-processing the entire text (only re-ranks cached sentence scores).
 
-  > 📸 *Screenshot: Summary Output card showing the generated summary and the Density slider*
+  > <img width="1430" height="1148" alt="image" src="https://github.com/user-attachments/assets/94ffbf13-1616-4670-b27b-52c03c03682c" />
+
 
 - **Keyword Output Quantity Slider** — A dedicated toggle slider (5–40 keywords, step 5) that controls the maximum number of keywords displayed in the tag-cloud matrix.
 
-  > 📸 *Screenshot: Keyword Cloud Grid showing TF-IDF badges and the Limit slider*
+  > <img width="1280" height="884" alt="image" src="https://github.com/user-attachments/assets/5ed5d149-dc4c-40dd-b744-08426a9876c3" />
+
 
 - **Cross-Component Keyword Highlighting** — Clicking any keyword badge in the matrix instantly swaps the textarea for a rich DOM-based display (`RawTextDisplay`) that wraps every matching occurrence in amber `<mark>` tags and auto-scrolls to the first hit.
 
-  > 📸 *Screenshot: Raw text view with amber highlights active after clicking a keyword badge*
+  > <img width="1054" height="1270" alt="image" src="https://github.com/user-attachments/assets/ced5f4a1-3cab-49a2-b109-c92a2d761cff" />
+
 
 - **Telemetry Drawer** — A slide-in side panel featuring:
   - Recharts-powered radial gauge for Readability Index (color-coded: red < 50, amber 50–70, green > 70)
@@ -77,9 +85,10 @@ The entire processing engine is built with deterministic algorithms and runs at 
   - Complexity Profiler showing average word length and average sentence length
   - Snapshot DB for saving, loading, and deleting analysis history
 
-  > 📸 *Screenshot: Telemetry Panel open — showing the readability gauge, sentiment bar, and complexity metrics*
+  > <img width="828" height="1520" alt="image" src="https://github.com/user-attachments/assets/df5aa7e8-9acf-4949-986d-4fe66d03f0c7" />
+  
+  > <img width="778" height="760" alt="image" src="https://github.com/user-attachments/assets/e1d4d67d-1e8f-4c01-96f6-eb66692be4f4" />
 
-  > 📸 *Screenshot: Snapshot DB section inside Telemetry with saved snapshot entries*
 
 ### Data Persistence
 - **LocalStorage History Sync** — Users can save named analysis snapshots (including raw text, summary, and compression settings) directly to the browser's `localStorage` via Zustand's `persist` middleware. Snapshots survive page reloads and can be restored or deleted at any time.
