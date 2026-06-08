@@ -20,7 +20,7 @@ export default function KeywordCloudGrid() {
         </h2>
         <div className="flex-1 border-2 border-slate-300 border-dashed rounded-3xl flex flex-col items-center justify-center text-slate-500 gap-4 min-h-[200px] bg-[#EBE7E0]/50 shadow-[inset_0_4px_8px_rgba(0,0,0,0.02)]">
           <Tag size={36} className="opacity-30 mb-2 text-slate-600" />
-          <p className="font-black text-sm tracking-widest uppercase opacity-60" style={{textShadow: '0 1px 0 rgba(255,255,255,0.8)'}}>Awaiting Data Injection</p>
+          <p className="font-black text-sm tracking-widest uppercase opacity-60" style={{textShadow: '0 1px 0 rgba(255,255,255,0.8)'}}>Waiting for text...</p>
         </div>
       </div>
     );
