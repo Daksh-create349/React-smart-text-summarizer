@@ -1,114 +1,141 @@
-# NexusText — Smart Text Summarizer & Keyword Weight Calculator
+# Smart Text Summarizer & Keyword Weight Calculator
 
-**Case Study No. 116** | B.Tech CSE 2025-29, Semester II | ITM Skills University  
+**Live Demo:** [Live Web Application](https://nexustext.vercel.app/)
+
+---
+
+**Case Study No. 116** | B.Tech CSE 2025–29, Semester II | ITM Skills University
 **Developed by:** Daksh Srivastava
+
+---
+
+## Overview
+
+This application is a high-performance, privacy-first analytical dashboard that transforms unstructured text into deeply indexed, mathematical data models. It operates as a purely in-memory processing engine — ingesting raw text, running it through a multi-stage tokenization and filtering pipeline, and producing rich statistical outputs including extractive summaries, weighted keyword matrices, readability gauges, and sentiment polarity analysis.
+
+The entire processing engine is built with deterministic algorithms and runs at near-instantaneous speeds using modern client-side JavaScript. No text is ever transmitted to a server; everything from tokenization to TF-IDF scoring happens locally in the browser tab.
 
 ---
 
 ## Problem Statement
 
-> Build a **frontend-only ReactJS web application** that performs real-time Natural Language Processing (NLP) entirely inside the user's browser. The system must implement deterministic string tokenization, TF-IDF keyword weighting, extractive sentence ranking, Flesch-Kincaid readability scoring, and lexical sentiment analysis — all without any backend server or external API. User data must never leave the client machine, ensuring absolute privacy.
+Build a frontend-only ReactJS web application that performs real-time Natural Language Processing (NLP) entirely inside the user's browser. The system must implement deterministic string tokenization, TF-IDF keyword weighting, extractive sentence ranking, Flesch-Kincaid readability scoring, and lexical sentiment analysis — all without any backend server or external API. User data must never leave the client machine, ensuring absolute privacy.
 
 ---
 
-## Project Overview
+## Screenshots
 
-**NexusText** is a high-performance, privacy-first analytical dashboard that transforms unstructured walls of text into deeply indexed, mathematical data models. It operates as a purely **in-memory compiler** — ingesting raw text, running it through a multi-stage tokenization and filtering pipeline, and producing rich statistical outputs including extractive summaries, weighted keyword matrices, readability gauges, and sentiment polarity analysis.
+### Landing Page
 
-The entire processing engine is built with deterministic algorithms and runs at near-instantaneous speeds using modern client-side JavaScript. No text is ever transmitted to a server; everything from tokenization to TF-IDF scoring happens locally in the browser tab.
+![Landing Page](./Screenshots/Landing%20Page.png)
+
+### Split Workspace Layout
+
+![Split Workspace Layout](./Screenshots/Split%20Workspace%20Layout.png)
+
+### Real-Time Live Ticker
+
+![Real-Time Live Ticker](./Screenshots/Real-Time%20Live%20Ticker.png)
+
+### Interactive Compression Slider
+
+![Interactive Compression Slider](./Screenshots/Interactive%20Compression%20Slider.png)
+
+### Keyword Output Quantity Slider
+
+![Keyword Output Quantity Slider](./Screenshots/Keyword%20Output%20Quantity%20Slider.png)
+
+### Cross-Component Keyword Highlighting
+
+![Cross-Component Keyword Highlighting](./Screenshots/Cross-Component%20Keyword%20Highlighting%20.png)
+
+### Telemetry Drawer
+
+![Telemetry Drawer](./Screenshots/Telemetry%20Drawer%20.png)
+
+### Snapshot DB
+
+![Snapshot DB](./Screenshots/Snapshot%20DB.png)
+
+### LocalStorage History Sync
+
+![LocalStorage History Sync](./Screenshots/LocalStorage%20History%20Sync.png)
 
 ---
 
 ## Features
 
 ### Core NLP Engine
-- **Tokenization Pipeline** — Splits documents into lowercase word arrays using Regular Expressions (`RegExp`), then filters them through a hardcoded static Stop-Words array (150+ common English words like *the*, *is*, *at*, *which*) embedded directly in source code.
+
+- **Tokenization Pipeline** — Splits documents into lowercase word arrays using Regular Expressions (`RegExp`), then filters them through a hardcoded static stop-words array of 150+ common English words embedded directly in source code.
 - **Porter Stemming Algorithm** — A full 5-step implementation of the classic Porter Stemmer that reduces inflected words to their root stems (e.g., *running* → *run*, *generalization* → *general*, *cats* → *cat*), enabling accurate term grouping across morphological variants.
-- **TF-IDF Keyword Weight Calculator** — Implements the standard Term Frequency–Inverse Document Frequency mathematical model:
-
-  ```
-  TF(t) = (Number of times term t appears in a sentence) / (Total number of words in the sentence)
-  IDF(t) = log(Total number of sentences / Number of sentences containing term t)
-  TF-IDF(t) = TF(t) × IDF(t)
-  ```
-
-  Words with high frequency that are meaningfully clustered across sentences receive the heaviest analytical weight.
-
-- **Extractive Sentence Ranking (TextRank)** — Scores every sentence by summing the TF-IDF weights of its unique keywords, sorts them by score in descending order, and extracts the top *X%* (user-controlled via an interactive slider) to assemble a coherent, naturally ordered summary.
-- **Flesch-Kincaid Readability Score** — Calculates reading ease using the standard formula:
-
-  ```
-  Score = 206.835 − 1.015 × (total words / total sentences) − 84.6 × (total syllables / total words)
-  ```
-
-  Powered by a custom syllable counter that handles silent-e rules and vowel cluster detection.
-
+- **TF-IDF Keyword Weight Calculator** — Implements the standard Term Frequency–Inverse Document Frequency mathematical model. Words with high frequency that are meaningfully clustered across sentences receive the heaviest analytical weight.
+- **Extractive Sentence Ranking** — Scores every sentence by summing the TF-IDF weights of its unique keywords, sorts them by score in descending order, and extracts the top X% (user-controlled via an interactive slider) to assemble a coherent, naturally ordered summary.
+- **Flesch-Kincaid Readability Score** — Calculates reading ease using the standard formula, powered by a custom syllable counter that handles silent-e rules and vowel cluster detection.
 - **Lexical Sentiment Analysis** — Compares filtered tokens against a static local dictionary of 200+ positive and 150+ negative emotional words to compute an overall sentiment polarity percentage.
 
 ### Dashboard & UI
 
 - **Skeuomorphic Design Language** — A premium, tactile interface inspired by physical analytical hardware, featuring recessed LCD-style screens, mechanical push-buttons with 3D depth shadows, and matte textured backgrounds.
-
-- **Landing Page** — A stunning entry screen with a hero headline, feature cards explaining TF-IDF, Privacy, and Telemetry capabilities, and a large physical "Engage System" call-to-action button.
-
-  > <img width="2940" height="1612" alt="image" src="https://github.com/user-attachments/assets/0a265fb6-539d-4ab8-9374-2ba4e46d3ba2" />
-
-
-- **Split Workspace Layout** — A responsive two-column grid: the left column houses the Data Ingestion editor, while the right column contains the Analytical Insights dashboard.
-
-  > <img width="2940" height="1514" alt="image" src="https://github.com/user-attachments/assets/3b3f7a30-10ad-4d1c-93c4-1e690533a7d4" />
-
-
+- **Landing Page** — A hero entry screen with feature cards explaining TF-IDF, Privacy, and Telemetry capabilities, and a prominent call-to-action button.
+- **Split Workspace Layout** — A responsive two-column grid: the left column houses the Data Ingestion editor, the right column contains the Analytical Insights dashboard.
 - **Real-Time Live Ticker** — Instantly tracks character count, word count, paragraph count, and estimated reading time (at 200 WPM) as the user types.
-
-  > <img width="1288" height="244" alt="image" src="https://github.com/user-attachments/assets/6ed202c7-c645-41a9-8cd6-f82977296f6b" />
-
-
-- **Interactive Compression Slider** — Allows seamless, real-time control of summary density from 5% to 100% without re-processing the entire text (only re-ranks cached sentence scores).
-
-  > <img width="1430" height="1148" alt="image" src="https://github.com/user-attachments/assets/94ffbf13-1616-4670-b27b-52c03c03682c" />
-
-
+- **Interactive Compression Slider** — Allows real-time control of summary density from 5% to 100% without re-processing the entire text (only re-ranks cached sentence scores).
 - **Keyword Output Quantity Slider** — A dedicated toggle slider (5–40 keywords, step 5) that controls the maximum number of keywords displayed in the tag-cloud matrix.
-
-  > <img width="1280" height="884" alt="image" src="https://github.com/user-attachments/assets/5ed5d149-dc4c-40dd-b744-08426a9876c3" />
-
-
-- **Cross-Component Keyword Highlighting** — Clicking any keyword badge in the matrix instantly swaps the textarea for a rich DOM-based display (`RawTextDisplay`) that wraps every matching occurrence in amber `<mark>` tags and auto-scrolls to the first hit.
-
-  > <img width="1054" height="1270" alt="image" src="https://github.com/user-attachments/assets/ced5f4a1-3cab-49a2-b109-c92a2d761cff" />
-
-
-- **Telemetry Drawer** — A slide-in side panel featuring:
-  - Recharts-powered radial gauge for Readability Index (color-coded: red < 50, amber 50–70, green > 70)
-  - Stacked polarity bar for Emotional Sentiment distribution
-  - Complexity Profiler showing average word length and average sentence length
-  - Snapshot DB for saving, loading, and deleting analysis history
-
-  > <img width="828" height="1520" alt="image" src="https://github.com/user-attachments/assets/df5aa7e8-9acf-4949-986d-4fe66d03f0c7" />
-  
-  > <img width="778" height="760" alt="image" src="https://github.com/user-attachments/assets/e1d4d67d-1e8f-4c01-96f6-eb66692be4f4" />
-
+- **Cross-Component Keyword Highlighting** — Clicking any keyword badge instantly swaps the textarea for a rich DOM-based display that wraps every matching occurrence in amber `<mark>` tags and auto-scrolls to the first hit.
+- **Telemetry Drawer** — A slide-in side panel featuring a Recharts-powered radial gauge for the Readability Index, a stacked polarity bar for Emotional Sentiment distribution, a Complexity Profiler, and a Snapshot DB for saving and restoring analysis history.
 
 ### Data Persistence
-- **LocalStorage History Sync** — Users can save named analysis snapshots (including raw text, summary, and compression settings) directly to the browser's `localStorage` via Zustand's `persist` middleware. Snapshots survive page reloads and can be restored or deleted at any time.
-  > <img width="1764" height="930" alt="image" src="https://github.com/user-attachments/assets/fcc3fa66-2dee-4811-a06b-4f009dfbed3a" />
 
+- **LocalStorage History Sync** — Users can save named analysis snapshots (including raw text, summary, and compression settings) directly to the browser's `localStorage` via Zustand's `persist` middleware. Snapshots survive page reloads and can be restored or deleted at any time.
 
 ---
 
-## Architecture & Technical Design
+## Tech Stack
 
-### Technology Stack
+| Layer | Technology | Version | Purpose |
+|---|---|---|---|
+| Framework | React | ^19.x | Component-based UI rendering |
+| Build Tool | Vite | ^8.x | Lightning-fast HMR and optimized production builds |
+| State Management | Zustand + `persist` middleware | ^5.x | Centralized reactive store with localStorage sync |
+| Styling | Tailwind CSS v4 (`@tailwindcss/vite`) | ^4.x | Utility-first CSS with skeuomorphic custom shadows |
+| Charting | Recharts | ^3.x | Radial bar gauge for readability visualization |
+| Icons | Lucide React | ^1.x | Consistent, lightweight SVG icon library |
 
-| Layer | Technology | Purpose |
-|---|---|---|
-| Framework | React 18 (via Vite) | Component-based UI rendering |
-| State Management | Zustand + `persist` middleware | Centralized reactive store with localStorage sync |
-| Styling | Tailwind CSS v4 (`@tailwindcss/vite`) | Utility-first CSS with skeuomorphic custom shadows |
-| Charting | Recharts | Radial bar gauge for readability visualization |
-| Icons | Lucide React | Consistent, lightweight SVG icon library |
-| Build Tool | Vite | Lightning-fast HMR and optimized production builds |
+---
+
+## Architecture & Data Flow
+
+### Data Flow Pipeline
+
+```mermaid
+flowchart TD
+    A([User Input — rawText]) --> B[setRawText triggers processText]
+
+    subgraph NLP_ENGINE ["NLP Processing Engine"]
+        B --> C[tokenize — lowercase word array]
+        C --> D[sentenceTokenizer — sentence array]
+        D --> E[removeStopWords — filtered tokens]
+        E --> F[stem — Porter Stemmer roots]
+        F --> G[calculateTFIDF — weight hash map]
+        G --> H[scoreSentences — score per sentence]
+        H --> I[calculateReadability — Flesch-Kincaid score]
+        I --> J[calculateSentiment — polarity %]
+        J --> K[stemToOriginalMap — display mapping]
+    end
+
+    K --> L{Compression Slider Changed?}
+    L -- Yes --> M[generateSummary — O n log n re-rank only]
+    L -- No --> N[Render all UI panels]
+    M --> N
+
+    subgraph UI_OUTPUT ["UI Output"]
+        N --> O[Summary Output Card]
+        N --> P[Keyword Cloud Grid]
+        N --> Q[Telemetry Drawer — Readability + Sentiment + History]
+        N --> R[Live Ticker — Chars, Words, Paragraphs, Read Time]
+    end
+```
 
 ### Project Structure
 
@@ -123,7 +150,7 @@ smart-text-summarizer/
     ├── index.css                       # Tailwind directives + global styles
     ├── App.jsx                         # Landing page + dashboard layout + routing
     ├── store/
-    │   └── useTextStore.js             # Zustand store (state matrix, actions, history, samples)
+    │   └── useTextStore.js             # Zustand store (state, actions, history, samples)
     ├── utils/
     │   ├── textProcessing.js           # Core NLP engine (tokenize, TF-IDF, summarize, readability, sentiment)
     │   ├── porterStemmer.js            # Full Porter Stemmer algorithm (5 steps)
@@ -139,62 +166,75 @@ smart-text-summarizer/
         └── TelemetryPanel.jsx          # Readability gauge + sentiment bar + complexity + history
 ```
 
-### Data Flow Pipeline
-
-```
-User Input (rawText)
-    │
-    ▼
-┌─────────────────────────────────────────────┐
-│  setRawText() → processText()               │
-│                                             │
-│  1. tokenize()         → lowercase word[]   │
-│  2. sentenceTokenizer() → sentence[]        │
-│  3. removeStopWords()  → filtered tokens    │
-│  4. stem()             → stemmed roots      │
-│  5. calculateTFIDF()   → weight hash map    │
-│  6. scoreSentences()   → score per sentence │
-│  7. calculateReadability() → Flesch-Kincaid │
-│  8. calculateSentiment()   → polarity %     │
-│  9. stemToOriginalMap  → display mapping    │
-└─────────────────────────────────────────────┘
-    │
-    ▼
-┌──────────────────────────────┐
-│  generateSummary()           │
-│  (called on compression      │
-│   slider change — O(n log n))│
-└──────────────────────────────┘
-    │
-    ▼
-UI renders: Summary, Keywords, Gauges, Ticker
-```
-
 ### Performance Design Decisions
 
 1. **Decoupled Summary Generation** — Changing the compression slider does NOT re-run the full tokenization pipeline. It only calls `generateSummary()` on the cached `sentenceScores[]`, making slider adjustments sub-millisecond.
-2. **Selective Re-rendering** — Each component subscribes to only the specific Zustand slices it needs (e.g., `KeywordCloudGrid` only watches `processedResult.tfidfMap` and `maxKeywords`), minimizing unnecessary React re-renders.
+2. **Selective Re-rendering** — Each component subscribes to only the specific Zustand slices it needs, minimizing unnecessary React re-renders.
 3. **Memoized Metrics** — The live ticker calculations (chars, words, paragraphs, reading time) are wrapped in `useMemo` and only recompute when `rawText` actually changes.
-4. **Stem-to-Original Mapping** — During tokenization, the engine tracks the most frequently occurring original word for each stemmed root, so the UI displays human-readable words (e.g., "telescope") instead of raw stems (e.g., "telescop").
+4. **Stem-to-Original Mapping** — During tokenization, the engine tracks the most frequently occurring original word for each stemmed root, so the UI displays human-readable words instead of raw stems.
+
+---
+
+## Mathematical Models
+
+### Term Frequency (TF)
+
+$$\text{TF}(t, s) = \frac{\text{count}(t \text{ in sentence } s)}{|\text{words in sentence } s|}$$
+
+### Inverse Document Frequency (IDF)
+
+$$\text{IDF}(t) = \log\left(\frac{N}{\text{df}(t)}\right)$$
+
+Where:
+* $N$ is the total number of sentences in the document.
+* $\text{df}(t)$ is the number of sentences containing the term $t$.
+
+### TF-IDF Weight
+
+$$W(t) = \frac{\sum_{s} \left[\text{TF}(t, s) \times \text{IDF}(t)\right]}{N}$$
+
+*(Averaged across all sentences)*
+
+### Sentence Score
+
+$$\text{Score}(s) = \sum_{t \in s} W(t)$$
+
+*(Sum of weights $W(t)$ for each unique stemmed term $t$ in sentence $s$)*
+
+### Flesch-Kincaid Reading Ease
+
+$$\text{FK} = 206.835 - 1.015 \times \left(\frac{\text{words}}{\text{sentences}}\right) - 84.6 \times \left(\frac{\text{syllables}}{\text{words}}\right)$$
+
+*(Clamped to the range $[0, 100]$)*
+
+### Sentiment Polarity
+
+$$\text{Positive \%} = \frac{\text{positiveHits}}{\text{positiveHits} + \text{negativeHits}} \times 100$$
+
+$$\text{Negative \%} = 100 - \text{Positive \%}$$
 
 ---
 
 ## Installation & Setup
 
 ### Prerequisites
+
 - **Node.js** v18 or higher
 - **npm** v9 or higher
 
 ### Steps
 
 ```bash
-# 1. Clone or navigate to the project directory
-cd smart-text-summarizer
+# 1. Clone the repository
+git clone https://github.com/Daksh-create349/React-smart-text-summarizer.git
 
-# 2. Install dependencies
+# 2. Navigate into the project directory
+cd React-smart-text-summarizer
+
+# 3. Install dependencies
 npm install
 
-# 3. Start the development server
+# 4. Start the development server
 npm run dev
 ```
 
@@ -216,65 +256,23 @@ The production bundle is output to the `dist/` directory and can be deployed to 
 
 ## How to Use
 
-1. **Launch** — Open the application and click the green **"Engage System"** button on the landing page.
-2. **Ingest Text** — Either paste your own long-form text into the editor, or click **"Load Sample Data"** to select one of three pre-loaded articles (AI/Technology, Health/Mediterranean Diet, Global Finance).
+1. **Launch** — Open the application and click the **"Engage System"** button on the landing page.
+2. **Ingest Text** — Paste your own long-form text into the editor, or click **"Load Sample Data"** to select one of three pre-loaded articles (AI/Technology, Health/Mediterranean Diet, Global Finance).
 3. **Read the Summary** — The right panel instantly generates an extractive summary. Use the **Density slider** (5%–100%) to control how many sentences are included.
-4. **Explore Keywords** — The Keyword Matrix below the summary shows the top TF-IDF–weighted terms as interactive badges. Use the **Limit slider** (5–40) to control how many appear.
-5. **Highlight Occurrences** — Click any keyword badge to highlight every occurrence of that word (and its morphological variants) directly in the raw text with amber markers.
-6. **Open Telemetry** — Click the **"Telemetry Panel"** button in the header to open the side drawer containing:
-   - **Readability Index** — Flesch-Kincaid gauge (0–100)
-   - **Emotional Polarity** — Positive vs. Negative sentiment bar
-   - **Complexity Profiler** — Average word length and sentence length
+4. **Explore Keywords** — The Keyword Matrix shows the top TF-IDF–weighted terms as interactive badges. Use the **Limit slider** (5–40) to control how many appear.
+5. **Highlight Occurrences** — Click any keyword badge to highlight every occurrence of that word and its morphological variants directly in the raw text with amber markers.
+6. **Open Telemetry** — Click the **"Telemetry Panel"** button in the header to open the side drawer containing the Readability Index gauge, Emotional Polarity bar, and Complexity Profiler.
 7. **Save Snapshots** — Inside the Telemetry Panel, click **"Commit"** to save the current analysis to localStorage. You can **Restore** or **Delete** any saved snapshot at any time.
 
 ---
 
 ## Sample Articles Included
 
-The application ships with three pre-loaded long-form articles for immediate testing:
-
 | # | Topic | Word Count | Description |
 |---|---|---|---|
 | 1 | Artificial Intelligence | ~300 | Covers AI evolution, deep learning, ethical concerns, and XAI |
 | 2 | Mediterranean Diet | ~300 | Explores cardiovascular benefits, cognitive health, and lifestyle |
 | 3 | Global Finance | ~300 | Discusses coordinated central bank monetary policy and market impact |
-
----
-
-## Mathematical Models Implemented
-
-### Term Frequency (TF)
-```
-TF(t, s) = count(t in sentence s) / |words in sentence s|
-```
-
-### Inverse Document Frequency (IDF)
-```
-IDF(t) = log(N / df(t))
-where N = total sentences, df(t) = sentences containing term t
-```
-
-### TF-IDF Weight
-```
-W(t) = Σ [TF(t, s) × IDF(t)] / N    (averaged across all sentences)
-```
-
-### Sentence Score
-```
-Score(s) = Σ W(t)    for each unique stemmed term t in sentence s
-```
-
-### Flesch-Kincaid Reading Ease
-```
-FK = 206.835 − 1.015 × (words/sentences) − 84.6 × (syllables/words)
-Clamped to range [0, 100]
-```
-
-### Sentiment Polarity
-```
-Positive% = positiveHits / (positiveHits + negativeHits) × 100
-Negative% = 100 − Positive%
-```
 
 ---
 
@@ -290,20 +288,21 @@ Negative% = 100 − Positive%
 
 | Package | Version | Purpose |
 |---|---|---|
-| `react` | ^18.x | UI framework |
-| `react-dom` | ^18.x | DOM rendering |
-| `zustand` | ^5.x | Lightweight state management |
-| `recharts` | ^2.x | Data visualization (radial gauge) |
-| `lucide-react` | ^0.4x | SVG icon components |
+| `react` | ^19.x | UI framework |
+| `react-dom` | ^19.x | DOM rendering |
+| `zustand` | ^5.x | Lightweight state management with persistence |
+| `recharts` | ^3.x | Data visualization (radial gauge) |
+| `lucide-react` | ^1.x | SVG icon components |
 | `@tailwindcss/vite` | ^4.x | Tailwind CSS build plugin |
 | `tailwindcss` | ^4.x | Utility-first CSS framework |
+| `vite` | ^8.x | Build tool and dev server |
 
 ---
 
 ## Author
 
-**Daksh Srivastava**  
-B.Tech Computer Science & Engineering, 2025-29  
+**Daksh Srivastava**
+B.Tech Computer Science & Engineering, 2025–29
 ITM Skills University
 
 ---
