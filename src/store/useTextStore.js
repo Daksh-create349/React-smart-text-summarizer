@@ -31,6 +31,11 @@ export const useTextStore = create(
       highlightedKeyword: null, // stemmed word or null
       history: [], // array of { id, name, rawText, date, summary, compressionPercentage }
       sampleArticles: [sample1, sample2, sample3],
+      isDarkMode: false,
+
+      toggleDarkMode: () => {
+        set({ isDarkMode: !get().isDarkMode });
+      },
 
       setRawText: (text) => {
         set({ rawText: text });
@@ -125,7 +130,10 @@ export const useTextStore = create(
     }),
     {
       name: 'text-summarizer-history', // key used in localStorage
-      partialize: (state) => ({ history: state.history }) // Persist only the history
+      partialize: (state) => ({ 
+        history: state.history,
+        isDarkMode: state.isDarkMode
+      }) // Persist history and theme choice
     }
   )
 );
