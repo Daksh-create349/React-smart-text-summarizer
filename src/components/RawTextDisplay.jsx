@@ -5,7 +5,6 @@ import { stem } from '../utils/porterStemmer';
 export default function RawTextDisplay() {
   const rawText = useTextStore((state) => state.rawText);
   const highlightedKeyword = useTextStore((state) => state.highlightedKeyword);
-  const isDarkMode = useTextStore((state) => state.isDarkMode);
   const containerRef = useRef(null);
 
   const elements = useMemo(() => {
@@ -28,8 +27,7 @@ export default function RawTextDisplay() {
             <mark 
               key={index} 
               id={!hasScrolled ? "first-highlight" : undefined}
-              className="bg-amber-400 dark:bg-amber-500 text-amber-900 dark:text-amber-950 font-black rounded-md px-1.5 py-0.5 shadow-[0_2px_4px_rgba(0,0,0,0.2),inset_0_1px_0_rgba(255,255,255,0.6)] border border-amber-500 dark:border-amber-600 transition-all"
-              style={{textShadow: isDarkMode ? '0 1px 0 rgba(255,255,255,0.2)' : '0 1px 0 rgba(255,255,255,0.4)'}}
+              className="bg-amber-100 dark:bg-amber-950/60 text-amber-900 dark:text-amber-200 font-semibold rounded px-1.5 py-0.5 border border-amber-200 dark:border-amber-900/30 transition-all"
             >
               {originalWord}
             </mark>
@@ -45,7 +43,7 @@ export default function RawTextDisplay() {
     }
 
     return parts;
-  }, [rawText, highlightedKeyword, isDarkMode]);
+  }, [rawText, highlightedKeyword]);
 
   useEffect(() => {
     if (highlightedKeyword && containerRef.current) {
@@ -59,8 +57,7 @@ export default function RawTextDisplay() {
   return (
     <div 
       ref={containerRef}
-      className="flex-1 w-full min-h-[300px] p-6 text-slate-800 dark:text-zinc-200 bg-[#D4D1C9] dark:bg-[#131416] border border-slate-400 dark:border-zinc-800 rounded-2xl overflow-y-auto whitespace-pre-wrap font-sans text-lg leading-relaxed shadow-[inset_0_6px_12px_rgba(0,0,0,0.15),inset_0_2px_4px_rgba(0,0,0,0.1),0_2px_0_rgba(255,255,255,0.8)] dark:shadow-[inset_0_6px_12px_rgba(0,0,0,0.4),0_1px_0_rgba(255,255,255,0.05)] mb-8 scrollbar-thin scrollbar-thumb-slate-400 dark:scrollbar-thumb-zinc-800 font-medium"
-      style={{textShadow: isDarkMode ? '0 1px 0 rgba(0,0,0,0.5)' : '0 1px 0 rgba(255,255,255,0.4)'}}
+      className="flex-1 w-full min-h-[300px] p-5 text-slate-800 dark:text-zinc-200 bg-slate-50/50 dark:bg-zinc-950/40 border border-slate-200 dark:border-zinc-850 rounded-xl overflow-y-auto whitespace-pre-wrap font-sans text-base leading-relaxed mb-6 scrollbar-thin scrollbar-thumb-slate-200 dark:scrollbar-thumb-zinc-800"
     >
       {elements}
     </div>

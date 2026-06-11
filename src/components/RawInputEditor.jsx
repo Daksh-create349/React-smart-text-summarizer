@@ -24,35 +24,32 @@ export default function RawInputEditor() {
     return { charsWithSpaces, wordCount, readingTime, paragraphs };
   }, [rawText]);
 
-  const textShadowStyle = { textShadow: isDarkMode ? '0 1px 0 rgba(0,0,0,0.5)' : '0 1px 0 rgba(255,255,255,0.8)' };
-  const headingShadowStyle = { textShadow: isDarkMode ? '0 1px 1px rgba(0,0,0,0.6)' : '0 1px 1px rgba(255,255,255,1)' };
-
   return (
-    <div className="flex flex-col h-full bg-gradient-to-b from-[#F7F5F0] to-[#EAE6DF] dark:from-[#2A2D32] dark:to-[#202225] rounded-[2rem] shadow-[0_20px_40px_rgba(0,0,0,0.1),inset_0_2px_0_white] dark:shadow-[0_20px_40px_rgba(0,0,0,0.3),inset_0_1px_0_rgba(255,255,255,0.05)] border border-slate-300 dark:border-zinc-700 p-6 lg:p-8 relative">
+    <div className="flex flex-col h-full bg-white dark:bg-zinc-900 border border-slate-200 dark:border-zinc-850 rounded-2xl shadow-sm p-6 relative">
       
       {/* Header */}
-      <div className="flex items-center justify-between mb-6 relative z-10">
-        <label htmlFor="raw-text-input" className="text-xl font-black text-slate-800 dark:text-zinc-100 flex items-center gap-3" style={headingShadowStyle}>
-          <div className="p-2.5 bg-gradient-to-b from-white to-slate-200 dark:from-[#2C2E33] dark:to-[#222428] rounded-xl border border-slate-300 dark:border-zinc-600 shadow-[0_2px_4px_rgba(0,0,0,0.05),inset_0_2px_0_white] dark:shadow-[0_2px_4px_rgba(0,0,0,0.3),inset_0_1px_0_rgba(255,255,255,0.05)]">
-            <Type size={20} className="text-emerald-700 dark:text-emerald-500 drop-shadow-sm" />
+      <div className="flex items-center justify-between mb-5 relative z-10">
+        <label htmlFor="raw-text-input" className="text-lg font-bold text-slate-900 dark:text-zinc-50 flex items-center gap-2">
+          <div className="p-2 bg-emerald-50 dark:bg-emerald-950/30 rounded-lg border border-emerald-100 dark:border-emerald-900/50">
+            <Type size={16} className="text-emerald-600 dark:text-emerald-400" />
           </div>
           Text Input
         </label>
         
         {highlightedKeyword && (
-          <div className="flex items-center gap-3 px-5 py-2.5 bg-gradient-to-b from-amber-100 to-amber-200 dark:from-amber-950 dark:to-amber-900 text-amber-900 dark:text-amber-200 rounded-xl text-sm font-black shadow-[inset_0_2px_0_white,0_4px_6px_rgba(0,0,0,0.1)] dark:shadow-[inset_0_1px_0_rgba(255,255,255,0.05),0_4px_6px_rgba(0,0,0,0.3)] border border-amber-300 dark:border-amber-800 animate-pulse">
-            <span style={{textShadow: isDarkMode ? '0 1px 0 rgba(0,0,0,0.8)' : '0 1px 0 rgba(255,255,255,0.5)'}}>Tracking: "{processedResult?.stemToOriginalMap?.[highlightedKeyword] || highlightedKeyword}"</span>
+          <div className="flex items-center gap-2 px-3 py-1.5 bg-amber-50 dark:bg-amber-950/20 text-amber-800 dark:text-amber-300 rounded-lg text-xs font-semibold border border-amber-100 dark:border-amber-900/30 animate-pulse">
+            <span>Tracking: "{processedResult?.stemToOriginalMap?.[highlightedKeyword] || highlightedKeyword}"</span>
             <button 
               onClick={clearHighlight} 
-              className="hover:bg-amber-300/50 dark:hover:bg-amber-800/50 rounded-full p-1 transition-colors cursor-pointer"
+              className="hover:bg-amber-100 dark:hover:bg-amber-900/40 rounded p-0.5 transition-colors cursor-pointer"
             >
-              <XCircle size={18} className="text-amber-700 dark:text-amber-400" />
+              <XCircle size={14} className="text-amber-600 dark:text-amber-400" />
             </button>
           </div>
         )}
       </div>
       
-      {/* Recessed Text Area / Display */}
+      {/* Text Area / Display */}
       <div className="flex-1 relative z-10 flex flex-col">
         {highlightedKeyword ? (
           <RawTextDisplay />
@@ -61,33 +58,33 @@ export default function RawInputEditor() {
             id="raw-text-input"
             value={rawText}
             onChange={handleTextChange}
-            placeholder="Paste or type your text here."
-            className="flex-1 w-full min-h-[300px] p-6 text-slate-800 dark:text-zinc-100 bg-[#D4D1C9] dark:bg-[#131416] border border-slate-400 dark:border-zinc-800 rounded-2xl resize-none focus:outline-none focus:ring-4 focus:ring-emerald-500/30 transition-all font-sans text-lg leading-relaxed tracking-wide mb-8 shadow-[inset_0_6px_12px_rgba(0,0,0,0.15),inset_0_2px_4px_rgba(0,0,0,0.1),0_2px_0_rgba(255,255,255,0.8)] dark:shadow-[inset_0_6px_12px_rgba(0,0,0,0.4),0_1px_0_rgba(255,255,255,0.05)] placeholder:text-slate-500 dark:placeholder:text-zinc-600 placeholder:font-bold"
+            placeholder="Paste or type your text here..."
+            className="flex-1 w-full min-h-[300px] p-5 text-slate-800 dark:text-zinc-100 bg-slate-50/50 dark:bg-zinc-950/40 border border-slate-200 dark:border-zinc-850 rounded-xl resize-none focus:outline-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500/20 transition-all font-sans text-base leading-relaxed mb-6 placeholder:text-slate-400 dark:placeholder:text-zinc-650"
             spellCheck="false"
           />
         )}
       </div>
 
-      <div className="flex flex-col xl:flex-row xl:items-center justify-between gap-6 relative z-10 mt-auto">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 relative z-10 mt-auto">
         
         {/* Hardware Action Buttons */}
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-3">
           <div className="relative group">
-            <button className="flex items-center gap-2 px-6 py-4 text-sm font-black text-slate-700 dark:text-zinc-300 bg-gradient-to-b from-white to-slate-200 dark:from-[#2C2E33] dark:to-[#222428] border border-slate-300 dark:border-zinc-700 rounded-xl transition-all shadow-[0_5px_0_#cbd5e1,0_8px_10px_rgba(0,0,0,0.1),inset_0_2px_0_white] dark:shadow-[0_5px_0_#141517,0_8px_10px_rgba(0,0,0,0.3),inset_0_1px_0_rgba(255,255,255,0.05)] active:shadow-none active:translate-y-[5px] cursor-pointer">
-              <FileText size={18} className="text-emerald-600 dark:text-emerald-500 drop-shadow-sm" />
-              <span style={textShadowStyle}>Load Sample Data</span>
-              <ChevronDown size={16} className="text-slate-400 dark:text-zinc-500" />
+            <button className="flex items-center gap-1.5 px-4 py-2.5 text-sm font-semibold text-slate-700 dark:text-zinc-300 bg-white dark:bg-zinc-900 hover:bg-slate-50 dark:hover:bg-zinc-800 border border-slate-200 dark:border-zinc-800 rounded-lg transition-all shadow-sm active:scale-98 cursor-pointer">
+              <FileText size={16} className="text-emerald-600 dark:text-emerald-500" />
+              <span>Load Sample Data</span>
+              <ChevronDown size={14} className="text-slate-400 dark:text-zinc-500" />
             </button>
-            <div className="absolute left-0 bottom-full mb-3 w-64 bg-[#EBE7E0] dark:bg-[#202225] border border-slate-300 dark:border-zinc-700 rounded-2xl shadow-[0_15px_30px_rgba(0,0,0,0.2),inset_0_2px_0_white] dark:shadow-[0_15px_30px_rgba(0,0,0,0.4),inset_0_1px_0_rgba(255,255,255,0.05)] opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-20 overflow-hidden">
-              <div className="p-2">
-                <div className="px-4 py-2 text-[11px] font-black text-slate-500 dark:text-zinc-400 uppercase tracking-widest mb-1" style={textShadowStyle}>
+            <div className="absolute left-0 bottom-full mb-2 w-64 bg-white dark:bg-zinc-900 border border-slate-200 dark:border-zinc-800 rounded-xl shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-20 overflow-hidden">
+              <div className="p-1">
+                <div className="px-3 py-1.5 text-[10px] font-bold text-slate-400 dark:text-zinc-500 uppercase tracking-wider">
                   System Presets
                 </div>
                 {sampleArticles.map((article, index) => (
                   <button
                     key={index}
                     onClick={() => setRawText(article)}
-                    className="w-full text-left px-4 py-3.5 text-sm text-slate-700 dark:text-zinc-300 rounded-xl hover:bg-white dark:hover:bg-zinc-800 hover:shadow-[0_2px_4px_rgba(0,0,0,0.05)] transition-all font-black flex items-center gap-2 cursor-pointer"
+                    className="w-full text-left px-3 py-2.5 text-sm text-slate-700 dark:text-zinc-300 rounded-lg hover:bg-slate-50 dark:hover:bg-zinc-800 transition-all font-semibold flex items-center gap-2 cursor-pointer"
                   >
                     Dataset Variant {index + 1}
                   </button>
@@ -98,34 +95,34 @@ export default function RawInputEditor() {
 
           <button
             onClick={handleClear}
-            className="flex items-center justify-center p-4 text-rose-600 dark:text-rose-400 bg-gradient-to-b from-white to-slate-200 dark:from-[#2C2E33] dark:to-[#222428] border border-slate-300 dark:border-zinc-700 rounded-xl transition-all shadow-[0_5px_0_#cbd5e1,0_8px_10px_rgba(0,0,0,0.1),inset_0_2px_0_white] dark:shadow-[0_5px_0_#141517,0_8px_10px_rgba(0,0,0,0.3),inset_0_1px_0_rgba(255,255,255,0.05)] active:shadow-none active:translate-y-[5px] cursor-pointer"
+            className="flex items-center justify-center p-2.5 text-rose-600 dark:text-rose-400 bg-white dark:bg-zinc-900 hover:bg-rose-50 dark:hover:bg-rose-950/20 border border-slate-200 dark:border-zinc-800 rounded-lg shadow-sm active:scale-95 cursor-pointer"
             title="Clear all text"
           >
-            <Trash2 size={20} className="drop-shadow-sm" />
+            <Trash2 size={18} />
           </button>
         </div>
 
-        {/* Recessed LCD Ticker */}
-        <div className="flex items-center justify-between xl:justify-start gap-4 sm:gap-8 bg-[#CFCBC3] dark:bg-[#1A1C1F] px-6 sm:px-8 py-4 rounded-xl border border-slate-400 dark:border-zinc-800 shadow-[inset_0_4px_8px_rgba(0,0,0,0.15),0_2px_0_rgba(255,255,255,0.8)] dark:shadow-[inset_0_4px_8px_rgba(0,0,0,0.4),0_1px_0_rgba(255,255,255,0.05)] overflow-x-auto">
+        {/* Minimalist Stats Panel */}
+        <div className="flex items-center justify-between gap-4 sm:gap-6 bg-slate-50 dark:bg-zinc-950/50 px-5 py-3 rounded-xl border border-slate-100 dark:border-zinc-855/50 overflow-x-auto">
           <div className="flex flex-col items-center">
-            <span className="text-[10px] font-black text-slate-600 dark:text-zinc-500 uppercase tracking-widest mb-1 opacity-70">Chars</span>
-            <span className="text-xl font-black text-slate-800 dark:text-zinc-200 leading-none font-mono tracking-tight" style={textShadowStyle}>{metrics.charsWithSpaces}</span>
+            <span className="text-[10px] font-bold text-slate-400 dark:text-zinc-500 uppercase tracking-wider mb-0.5">Chars</span>
+            <span className="text-base font-bold text-slate-800 dark:text-zinc-200 leading-none">{metrics.charsWithSpaces}</span>
           </div>
-          <div className="w-px h-8 bg-slate-400 dark:bg-zinc-700 shadow-[1px_0_0_rgba(255,255,255,0.5)] dark:shadow-[1px_0_0_rgba(255,255,255,0.05)]"></div>
+          <div className="w-px h-6 bg-slate-200 dark:bg-zinc-800 self-center"></div>
           <div className="flex flex-col items-center">
-            <span className="text-[10px] font-black text-slate-600 dark:text-zinc-500 uppercase tracking-widest mb-1 opacity-70">Words</span>
-            <span className="text-xl font-black text-slate-800 dark:text-zinc-200 leading-none font-mono tracking-tight" style={textShadowStyle}>{metrics.wordCount}</span>
+            <span className="text-[10px] font-bold text-slate-400 dark:text-zinc-500 uppercase tracking-wider mb-0.5">Words</span>
+            <span className="text-base font-bold text-slate-800 dark:text-zinc-200 leading-none">{metrics.wordCount}</span>
           </div>
-          <div className="w-px h-8 bg-slate-400 dark:bg-zinc-700 shadow-[1px_0_0_rgba(255,255,255,0.5)] dark:shadow-[1px_0_0_rgba(255,255,255,0.05)]"></div>
+          <div className="w-px h-6 bg-slate-200 dark:bg-zinc-800 self-center"></div>
           <div className="flex flex-col items-center">
-            <span className="text-[10px] font-black text-slate-600 dark:text-zinc-500 uppercase tracking-widest mb-1 opacity-70">Blocks</span>
-            <span className="text-xl font-black text-slate-800 dark:text-zinc-200 leading-none font-mono tracking-tight" style={textShadowStyle}>{metrics.paragraphs}</span>
+            <span className="text-[10px] font-bold text-slate-400 dark:text-zinc-500 uppercase tracking-wider mb-0.5">Blocks</span>
+            <span className="text-base font-bold text-slate-800 dark:text-zinc-200 leading-none">{metrics.paragraphs}</span>
           </div>
-          <div className="w-px h-8 bg-slate-400 dark:bg-zinc-700 shadow-[1px_0_0_rgba(255,255,255,0.5)] dark:shadow-[1px_0_0_rgba(255,255,255,0.05)]"></div>
+          <div className="w-px h-6 bg-slate-200 dark:bg-zinc-800 self-center"></div>
           <div className="flex flex-col items-center">
-            <span className="text-[10px] font-black text-slate-600 dark:text-zinc-500 uppercase tracking-widest mb-1 opacity-70">Time</span>
-            <span className="text-xl font-black text-slate-800 dark:text-zinc-200 leading-none font-mono tracking-tight flex items-baseline gap-1" style={textShadowStyle}>
-              {metrics.readingTime} <span className="text-xs text-slate-600 dark:text-zinc-400 font-sans">m</span>
+            <span className="text-[10px] font-bold text-slate-400 dark:text-zinc-500 uppercase tracking-wider mb-0.5">Time</span>
+            <span className="text-base font-bold text-slate-800 dark:text-zinc-200 leading-none flex items-baseline gap-0.5">
+              {metrics.readingTime}<span className="text-[10px] text-slate-500 font-medium">m</span>
             </span>
           </div>
         </div>

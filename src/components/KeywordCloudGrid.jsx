@@ -8,23 +8,19 @@ export default function KeywordCloudGrid() {
   const setMaxKeywords = useTextStore((state) => state.setMaxKeywords);
   const highlightedKeyword = useTextStore((state) => state.highlightedKeyword);
   const setHighlightedKeyword = useTextStore((state) => state.setHighlightedKeyword);
-  const isDarkMode = useTextStore((state) => state.isDarkMode);
-
-  const textShadowStyle = { textShadow: isDarkMode ? '0 1px 0 rgba(0,0,0,0.5)' : '0 1px 0 rgba(255,255,255,0.4)' };
-  const headingShadowStyle = { textShadow: isDarkMode ? '0 1px 1px rgba(0,0,0,0.6)' : '0 1px 1px rgba(255,255,255,1)' };
 
   if (!processedResult || !processedResult.tfidfMap) {
     return (
-      <div className="bg-gradient-to-b from-[#F7F5F0] to-[#EAE6DF] dark:from-[#2A2D32] dark:to-[#202225] rounded-[2rem] shadow-[0_20px_40px_rgba(0,0,0,0.1),inset_0_2px_0_white] dark:shadow-[0_20px_40px_rgba(0,0,0,0.3),inset_0_1px_0_rgba(255,255,255,0.05)] border border-slate-300 dark:border-zinc-700 p-6 lg:p-8 flex-1 flex flex-col transition-all">
-        <h2 className="text-xl font-black text-slate-800 dark:text-zinc-100 flex items-center gap-3 mb-6" style={headingShadowStyle}>
-           <div className="p-2.5 bg-gradient-to-b from-white to-slate-200 dark:from-[#2C2E33] dark:to-[#222428] rounded-xl border border-slate-300 dark:border-zinc-600 shadow-[0_2px_4px_rgba(0,0,0,0.05),inset_0_2px_0_white] dark:shadow-[0_2px_4px_rgba(0,0,0,0.3),inset_0_1px_0_rgba(255,255,255,0.05)]">
-             <Tag className="text-emerald-600 dark:text-emerald-500 drop-shadow-sm" size={20} /> 
+      <div className="bg-white dark:bg-zinc-900 border border-slate-200 dark:border-zinc-850 rounded-2xl shadow-sm p-6 flex-1 flex flex-col transition-all">
+        <h2 className="text-lg font-bold text-slate-900 dark:text-zinc-50 flex items-center gap-2 mb-5">
+           <div className="p-2 bg-emerald-50 dark:bg-emerald-950/30 rounded-lg border border-emerald-100 dark:border-emerald-900/50">
+             <Tag className="text-emerald-600 dark:text-emerald-400" size={16} /> 
            </div>
            Keyword Matrix
         </h2>
-        <div className="flex-1 border-2 border-slate-300 dark:border-zinc-850 border-dashed rounded-3xl flex flex-col items-center justify-center text-slate-500 dark:text-zinc-500 gap-4 min-h-[200px] bg-[#EBE7E0]/50 dark:bg-[#1A1C1F]/50 shadow-[inset_0_4px_8px_rgba(0,0,0,0.02)]">
-          <Tag size={36} className="opacity-30 mb-2 text-slate-600 dark:text-zinc-500" />
-          <p className="font-black text-sm tracking-widest uppercase opacity-60" style={textShadowStyle}>Waiting for text...</p>
+        <div className="flex-1 border border-dashed border-slate-200 dark:border-zinc-800 rounded-xl flex flex-col items-center justify-center text-slate-400 dark:text-zinc-650 min-h-[160px] bg-slate-50/50 dark:bg-zinc-950/10 shadow-[inset_0_4px_8px_rgba(0,0,0,0.02)]">
+          <Tag size={28} className="opacity-40 mb-2" />
+          <p className="text-xs font-semibold tracking-wider uppercase opacity-80">Waiting for text...</p>
         </div>
       </div>
     );
@@ -39,7 +35,7 @@ export default function KeywordCloudGrid() {
   
   const getBadgeStyle = (weight) => {
     const normalized = maxWeight === minWeight ? 1 : (weight - minWeight) / (maxWeight - minWeight);
-    const fontSize = 0.8 + (normalized * 0.4); 
+    const fontSize = 0.8 + (normalized * 0.3); 
     
     return {
       fontSize: `${fontSize}rem`
@@ -47,21 +43,21 @@ export default function KeywordCloudGrid() {
   };
 
   return (
-    <div className="bg-gradient-to-b from-[#F7F5F0] to-[#EAE6DF] dark:from-[#2A2D32] dark:to-[#202225] rounded-[2rem] shadow-[0_20px_40px_rgba(0,0,0,0.1),inset_0_2px_0_white] dark:shadow-[0_20px_40px_rgba(0,0,0,0.3),inset_0_1px_0_rgba(255,255,255,0.05)] border border-slate-300 dark:border-zinc-700 p-6 lg:p-8 flex-1 flex flex-col transition-all relative">
+    <div className="bg-white dark:bg-zinc-900 border border-slate-200 dark:border-zinc-850 rounded-2xl shadow-sm p-6 flex-1 flex flex-col transition-all relative">
       
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-6 mb-8 relative z-10">
-        <h2 className="text-xl font-black text-slate-800 dark:text-zinc-100 flex items-center gap-3" style={headingShadowStyle}>
-          <div className="p-2.5 bg-gradient-to-b from-white to-slate-200 dark:from-[#2C2E33] dark:to-[#222428] rounded-xl border border-slate-300 dark:border-zinc-600 shadow-[0_2px_4px_rgba(0,0,0,0.05),inset_0_2px_0_white] dark:shadow-[0_2px_4px_rgba(0,0,0,0.3),inset_0_1px_0_rgba(255,255,255,0.05)]">
-            <Tag size={20} className="text-emerald-600 dark:text-emerald-500 drop-shadow-sm" />
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-5 relative z-10">
+        <h2 className="text-lg font-bold text-slate-900 dark:text-zinc-50 flex items-center gap-2">
+          <div className="p-2 bg-emerald-50 dark:bg-emerald-950/30 rounded-lg border border-emerald-100 dark:border-emerald-900/50">
+            <Tag size={16} className="text-emerald-600 dark:text-emerald-400" />
           </div>
           Keyword Matrix
         </h2>
         
-        {/* Recessed Limit Slider */}
-        <div className="flex items-center gap-4 bg-[#D4D1C9] dark:bg-[#1A1C1F] px-6 py-3 rounded-2xl border border-slate-400 dark:border-zinc-800 shadow-[inset_0_3px_6px_rgba(0,0,0,0.15),0_2px_0_rgba(255,255,255,0.8)] dark:shadow-[inset_0_3px_6px_rgba(0,0,0,0.4),0_1px_0_rgba(255,255,255,0.05)]">
-          <div className="flex items-center gap-2 text-[11px] font-black text-slate-600 dark:text-zinc-400 uppercase tracking-widest" style={textShadowStyle}>
-            <Settings2 size={16} className="text-slate-500 dark:text-zinc-400 drop-shadow-sm" /> 
-            Limit: <span className="text-emerald-700 dark:text-emerald-500 ml-1 text-sm">{maxKeywords}</span>
+        {/* Dynamic Limit Slider */}
+        <div className="flex items-center gap-3 bg-slate-50 dark:bg-zinc-950/50 px-4 py-2 rounded-xl border border-slate-100 dark:border-zinc-850/50 text-xs font-semibold">
+          <div className="flex items-center gap-1.5 text-slate-500 dark:text-zinc-400 uppercase tracking-wider">
+            <Settings2 size={14} className="text-slate-400 dark:text-zinc-500" /> 
+            Limit: <span className="text-emerald-600 dark:text-emerald-400 ml-0.5 font-bold">{maxKeywords}</span>
           </div>
           <input 
             type="range" 
@@ -70,12 +66,12 @@ export default function KeywordCloudGrid() {
             step="5"
             value={maxKeywords}
             onChange={(e) => setMaxKeywords(parseInt(e.target.value))}
-            className="w-24 md:w-32 h-2.5 bg-slate-400 dark:bg-zinc-700 rounded-full appearance-none cursor-pointer accent-emerald-600 dark:accent-emerald-500 shadow-[inset_0_2px_4px_rgba(0,0,0,0.2)]"
+            className="w-24 md:w-32 h-1.5 bg-slate-200 dark:bg-zinc-800 rounded-full appearance-none cursor-pointer accent-emerald-600 dark:accent-emerald-500"
           />
         </div>
       </div>
 
-      <div className="flex flex-wrap gap-4 items-center justify-center sm:justify-start relative z-10 p-4 bg-[#EBE7E0]/50 dark:bg-[#1A1C1F]/50 rounded-3xl border border-slate-300 dark:border-zinc-800 shadow-[inset_0_4px_8px_rgba(0,0,0,0.03)]">
+      <div className="flex flex-wrap gap-2 items-center justify-center sm:justify-start relative z-10 p-4 bg-slate-50/50 dark:bg-zinc-950/45 rounded-xl border border-slate-200 dark:border-zinc-850">
         {topKeywords.map(([word, weight]) => {
           const isActive = highlightedKeyword === word;
           const dynamicStyle = getBadgeStyle(weight);
@@ -86,15 +82,13 @@ export default function KeywordCloudGrid() {
               key={word}
               onClick={() => setHighlightedKeyword(isActive ? null : word)}
               style={dynamicStyle}
-              className={`px-5 py-2.5 rounded-xl border transition-all duration-300 cursor-pointer outline-none font-black flex items-center justify-center
+              className={`px-3 py-1.5 rounded-full border transition-all duration-200 cursor-pointer outline-none font-semibold flex items-center justify-center
                 ${isActive 
-                  ? 'bg-[#CFCBC3] dark:bg-[#1A1C1F] border-slate-400 dark:border-zinc-750 text-amber-700 dark:text-amber-400 shadow-[inset_0_4px_8px_rgba(0,0,0,0.2),0_1px_0_rgba(255,255,255,0.8)] dark:shadow-[inset_0_4px_8px_rgba(0,0,0,0.4),0_1px_0_rgba(0,0,0,0.5)] scale-95 translate-y-[2px]' 
-                  : 'bg-gradient-to-b from-white to-slate-100 dark:from-[#2C2E33] dark:to-[#222428] border-slate-300 dark:border-zinc-700 text-slate-700 dark:text-zinc-300 shadow-[0_6px_0_#cbd5e1,0_8px_10px_rgba(0,0,0,0.1),inset_0_2px_0_white] dark:shadow-[0_6px_0_#141517,0_8px_10px_rgba(0,0,0,0.3),inset_0_1px_0_rgba(255,255,255,0.05)] hover:shadow-[0_4px_0_#cbd5e1,0_4px_6px_rgba(0,0,0,0.1),inset_0_2px_0_white] dark:hover:shadow-[0_4px_0_#141517,0_4px_6px_rgba(0,0,0,0.3),inset_0_1px_0_rgba(255,255,255,0.05)] hover:translate-y-[2px]'}`}
+                  ? 'border-emerald-600 bg-emerald-600 text-white shadow-sm scale-95' 
+                  : 'border-slate-200 dark:border-zinc-800 text-slate-600 dark:text-zinc-300 bg-white dark:bg-zinc-900/50 hover:bg-slate-50 dark:hover:bg-zinc-800'}`}
               title={`Root Stem: ${word} | Score: ${weight.toFixed(4)}`}
             >
-              <span style={{textShadow: isActive ? (isDarkMode ? '0 1px 0 rgba(0,0,0,0.5)' : '0 1px 0 rgba(255,255,255,0.4)') : (isDarkMode ? '0 1px 0 rgba(0,0,0,0.5)' : '0 1px 0 rgba(255,255,255,0.8)')}}>
-                {displayWord}
-              </span>
+              <span>{displayWord}</span>
             </button>
           );
         })}
