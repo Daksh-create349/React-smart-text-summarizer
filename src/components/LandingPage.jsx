@@ -48,7 +48,7 @@ function LinkedinIcon({ size = 16, className = "" }) {
   );
 }
 
-export default function LandingPage({ onStart }) {
+export default function LandingPage({ onStart, onOpenGuide }) {
   const isDarkMode = useTextStore((state) => state.isDarkMode);
   const toggleDarkMode = useTextStore((state) => state.toggleDarkMode);
   const [isSettingsOpen, setIsSettingsOpen] = useState(false);
@@ -72,6 +72,12 @@ export default function LandingPage({ onStart }) {
         <div className="flex items-center gap-6">
           <a href="#features" className="text-sm font-semibold text-slate-600 dark:text-zinc-400 hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors hidden md:block">Features</a>
           <a href="#tech" className="text-sm font-semibold text-slate-600 dark:text-zinc-400 hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors hidden md:block">Algorithms</a>
+          <button 
+            onClick={onOpenGuide}
+            className="text-sm font-semibold text-slate-600 dark:text-zinc-400 hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors hidden md:block cursor-pointer bg-transparent border-none p-0 outline-none"
+          >
+            How to Use
+          </button>
           <a href="#contact" className="text-sm font-semibold text-slate-600 dark:text-zinc-400 hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors hidden md:block">Developer</a>
           
           <div className="relative">
@@ -136,13 +142,13 @@ export default function LandingPage({ onStart }) {
             <span>Launch Dashboard</span>
             <ChevronRight size={20} />
           </button>
-          <a 
-            href="#features" 
+          <button 
+            onClick={onOpenGuide}
             className="flex items-center gap-1.5 px-6 py-4 bg-white dark:bg-zinc-900 hover:bg-slate-50 dark:hover:bg-zinc-850 border border-slate-200 dark:border-zinc-800 text-slate-700 dark:text-zinc-300 rounded-xl font-semibold text-lg transition-all shadow-sm active:scale-95 cursor-pointer"
           >
-            <span>Learn More</span>
-            <ChevronDown size={20} />
-          </a>
+            <span>How to Use</span>
+            <ChevronRight size={20} className="text-emerald-600 dark:text-emerald-500" />
+          </button>
         </div>
 
         {/* Dashboard Mockup Showcase */}

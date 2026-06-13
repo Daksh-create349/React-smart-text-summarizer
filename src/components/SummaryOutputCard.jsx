@@ -11,7 +11,7 @@ export default function SummaryOutputCard() {
   const hasContent = processedResult !== null;
 
   return (
-    <div className="bg-white dark:bg-zinc-900 border border-slate-200 dark:border-zinc-850 rounded-2xl shadow-sm p-6 flex flex-col relative">
+    <div id="onboarding-summary" className="bg-white dark:bg-zinc-900 border border-slate-200 dark:border-zinc-850 rounded-2xl shadow-sm p-6 flex flex-col relative">
 
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-5 relative z-10">
         <h2 className="text-lg font-bold text-slate-900 dark:text-zinc-50 flex items-center gap-2 group relative cursor-help">

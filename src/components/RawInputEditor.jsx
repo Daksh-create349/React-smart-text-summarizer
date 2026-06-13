@@ -25,7 +25,7 @@ export default function RawInputEditor() {
   }, [rawText]);
 
   return (
-    <div className="flex flex-col h-full bg-white dark:bg-zinc-900 border border-slate-200 dark:border-zinc-850 rounded-2xl shadow-sm p-6 relative">
+    <div id="onboarding-editor" className="flex flex-col h-full bg-white dark:bg-zinc-900 border border-slate-200 dark:border-zinc-850 rounded-2xl shadow-sm p-6 relative">
       
       {/* Header */}
       <div className="flex items-center justify-between mb-5 relative z-10">

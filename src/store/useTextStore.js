@@ -32,9 +32,26 @@ export const useTextStore = create(
       history: [], // array of { id, name, rawText, date, summary, compressionPercentage }
       sampleArticles: [sample1, sample2, sample3],
       isDarkMode: false,
+      
+      // Onboarding state
+      isOnboardingActive: false,
+      onboardingStep: 0,
+      hasCompletedOnboarding: false,
 
       toggleDarkMode: () => {
         set({ isDarkMode: !get().isDarkMode });
+      },
+
+      startOnboarding: () => {
+        set({ isOnboardingActive: true, onboardingStep: 0 });
+      },
+
+      completeOnboarding: () => {
+        set({ isOnboardingActive: false, hasCompletedOnboarding: true });
+      },
+
+      setOnboardingStep: (step) => {
+        set({ onboardingStep: step });
       },
 
       setRawText: (text) => {
@@ -132,8 +149,9 @@ export const useTextStore = create(
       name: 'text-summarizer-history', // key used in localStorage
       partialize: (state) => ({ 
         history: state.history,
-        isDarkMode: state.isDarkMode
-      }) // Persist history and theme choice
+        isDarkMode: state.isDarkMode,
+        hasCompletedOnboarding: state.hasCompletedOnboarding
+      }) // Persist history, theme choice, and onboarding status
     }
   )
 );

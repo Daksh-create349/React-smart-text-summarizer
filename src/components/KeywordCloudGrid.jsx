@@ -11,7 +11,7 @@ export default function KeywordCloudGrid() {
 
   if (!processedResult || !processedResult.tfidfMap) {
     return (
-      <div className="bg-white dark:bg-zinc-900 border border-slate-200 dark:border-zinc-850 rounded-2xl shadow-sm p-6 flex-1 flex flex-col transition-all">
+      <div id="onboarding-keywords" className="bg-white dark:bg-zinc-900 border border-slate-200 dark:border-zinc-850 rounded-2xl shadow-sm p-6 flex-1 flex flex-col transition-all">
         <h2 className="text-lg font-bold text-slate-900 dark:text-zinc-50 flex items-center gap-2 mb-5">
            <div className="p-2 bg-emerald-50 dark:bg-emerald-950/30 rounded-lg border border-emerald-100 dark:border-emerald-900/50">
              <Tag className="text-emerald-600 dark:text-emerald-400" size={16} /> 
@@ -43,7 +43,7 @@ export default function KeywordCloudGrid() {
   };
 
   return (
-    <div className="bg-white dark:bg-zinc-900 border border-slate-200 dark:border-zinc-850 rounded-2xl shadow-sm p-6 flex-1 flex flex-col transition-all relative">
+    <div id="onboarding-keywords" className="bg-white dark:bg-zinc-900 border border-slate-200 dark:border-zinc-850 rounded-2xl shadow-sm p-6 flex-1 flex flex-col transition-all relative">
       
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-5 relative z-10">
         <h2 className="text-lg font-bold text-slate-900 dark:text-zinc-50 flex items-center gap-2">

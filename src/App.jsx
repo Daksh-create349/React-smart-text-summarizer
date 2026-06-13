@@ -1,17 +1,30 @@
 import React, { useState, useEffect } from 'react';
-import { Database, Settings, Sun, Moon, BarChart3 } from 'lucide-react';
+import { Database, Settings, Sun, Moon, BarChart3, Sparkles } from 'lucide-react';
 import RawInputEditor from './components/RawInputEditor';
 import AnalyticsDashboard from './components/AnalyticsDashboard';
 import TelemetryPanel from './components/TelemetryPanel';
 import LandingPage from './components/LandingPage';
+import HowToUsePage from './components/HowToUsePage';
+import OnboardingTour from './components/OnboardingTour';
 import { useTextStore } from './store/useTextStore';
 
 export default function App() {
   const [hasStarted, setHasStarted] = useState(false);
   const [isTelemetryOpen, setIsTelemetryOpen] = useState(false);
   const [isSettingsOpen, setIsSettingsOpen] = useState(false);
+  const [isGuideOpen, setIsGuideOpen] = useState(false);
   const isDarkMode = useTextStore((state) => state.isDarkMode);
   const toggleDarkMode = useTextStore((state) => state.toggleDarkMode);
+  const isOnboardingActive = useTextStore((state) => state.isOnboardingActive);
+  const hasCompletedOnboarding = useTextStore((state) => state.hasCompletedOnboarding);
+  const startOnboarding = useTextStore((state) => state.startOnboarding);
+
+  // Trigger onboarding walkthrough automatically on first load of the dashboard
+  useEffect(() => {
+    if (hasStarted && !hasCompletedOnboarding && !isOnboardingActive) {
+      startOnboarding();
+    }
+  }, [hasStarted, hasCompletedOnboarding, isOnboardingActive, startOnboarding]);
 
   // Sync isDarkMode class dynamically onto html root element
   useEffect(() => {
@@ -22,8 +35,12 @@ export default function App() {
     }
   }, [isDarkMode]);
 
+  if (isGuideOpen) {
+    return <HowToUsePage onClose={() => setIsGuideOpen(false)} />;
+  }
+
   if (!hasStarted) {
-    return <LandingPage onStart={() => setHasStarted(true)} />;
+    return <LandingPage onStart={() => setHasStarted(true)} onOpenGuide={() => setIsGuideOpen(true)} />;
   }
 
   return (
@@ -45,7 +62,9 @@ export default function App() {
           </div>
           
           <div className="flex items-center gap-3">
+
             <button
+              id="onboarding-telemetry"
               onClick={() => setIsTelemetryOpen(!isTelemetryOpen)}
               className="flex items-center gap-2 px-4 py-2.5 bg-slate-900 dark:bg-zinc-50 hover:bg-slate-800 dark:hover:bg-zinc-200 text-white dark:text-zinc-950 border border-transparent rounded-lg font-semibold text-sm transition-all shadow-sm active:scale-95 cursor-pointer"
             >
@@ -78,6 +97,19 @@ export default function App() {
                       <span className={`absolute top-0.5 left-0.5 w-5 h-5 rounded-full bg-white transition-transform duration-200 shadow ${isDarkMode ? 'translate-x-5' : 'translate-x-0'}`} />
                     </button>
                   </div>
+                  
+                  <div className="border-t border-slate-100 dark:border-zinc-850 mt-3 pt-3 flex flex-col gap-2">
+                    <button
+                      onClick={() => {
+                        setIsSettingsOpen(false);
+                        startOnboarding();
+                      }}
+                      className="w-full text-left px-3 py-2 text-xs font-semibold text-slate-700 dark:text-zinc-350 hover:bg-slate-50 dark:hover:bg-zinc-800 transition-all rounded-lg flex items-center gap-2 cursor-pointer"
+                    >
+                      <Sparkles size={14} className="text-emerald-600 dark:text-emerald-500" />
+                      Restart Tour Walkthrough
+                    </button>
+                  </div>
                 </div>
               )}
             </div>
@@ -102,6 +134,7 @@ export default function App() {
         isOpen={isTelemetryOpen} 
         onClose={() => setIsTelemetryOpen(false)} 
       />
+      <OnboardingTour />
     </div>
   );
 }
